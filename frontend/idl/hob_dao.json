@@ -1,0 +1,626 @@
+{
+  "address": "CX6oBVoDv3dFWsSmEJbaWAaNzdhyjbBDdCCue8vDmQSo",
+  "metadata": {
+    "name": "hob_dao",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "create_proposal",
+      "discriminator": [
+        132,
+        116,
+        68,
+        174,
+        216,
+        160,
+        198,
+        22
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true
+        },
+        {
+          "name": "proposal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  114,
+                  111,
+                  112,
+                  111,
+                  115,
+                  97,
+                  108
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "dao_state"
+              },
+              {
+                "kind": "account",
+                "path": "dao_state.proposal_count",
+                "account": "DaoState"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "creator_token_account"
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "freeze_token_account",
+      "discriminator": [
+        138,
+        168,
+        178,
+        109,
+        205,
+        224,
+        209,
+        93
+      ],
+      "accounts": [
+        {
+          "name": "token_account",
+          "writable": true
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "wallet"
+        },
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize_dao",
+      "discriminator": [
+        128,
+        226,
+        96,
+        90,
+        39,
+        56,
+        24,
+        196
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  111
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "token_mint"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "quorum_percentage",
+          "type": "u8"
+        },
+        {
+          "name": "total_voters",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "unfreeze_token_account",
+      "discriminator": [
+        63,
+        15,
+        84,
+        206,
+        182,
+        174,
+        147,
+        86
+      ],
+      "accounts": [
+        {
+          "name": "token_account",
+          "writable": true
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "wallet"
+        },
+        {
+          "name": "authority",
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_quorum_percentage",
+      "discriminator": [
+        18,
+        136,
+        170,
+        239,
+        5,
+        3,
+        17,
+        96
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  111
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "new_quorum_percentage",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "update_total_voters",
+      "discriminator": [
+        250,
+        241,
+        181,
+        41,
+        72,
+        113,
+        114,
+        70
+      ],
+      "accounts": [
+        {
+          "name": "dao_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  111
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "signer": true,
+          "relations": [
+            "dao_state"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "new_total_voters",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "vote_on_proposal",
+      "discriminator": [
+        188,
+        239,
+        13,
+        88,
+        119,
+        199,
+        251,
+        119
+      ],
+      "accounts": [
+        {
+          "name": "proposal",
+          "writable": true
+        },
+        {
+          "name": "dao_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  97,
+                  111
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "voter_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  111,
+                  116,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "proposal"
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint"
+        },
+        {
+          "name": "voter_token_account"
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "vote_type",
+          "type": {
+            "defined": {
+              "name": "VoteType"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "DaoState",
+      "discriminator": [
+        24,
+        50,
+        14,
+        105,
+        233,
+        60,
+        201,
+        244
+      ]
+    },
+    {
+      "name": "Proposal",
+      "discriminator": [
+        26,
+        94,
+        189,
+        187,
+        116,
+        136,
+        53,
+        33
+      ]
+    },
+    {
+      "name": "VoterState",
+      "discriminator": [
+        251,
+        152,
+        76,
+        161,
+        77,
+        177,
+        239,
+        208
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "NotEnoughTokens",
+      "msg": "You don't have enough tokens to vote on this proposal."
+    },
+    {
+      "code": 6001,
+      "name": "AlreadyVoted",
+      "msg": "You have already voted on this proposal."
+    },
+    {
+      "code": 6002,
+      "name": "NotEnoughVotes",
+      "msg": "The proposal doesn't have enough votes to be executed."
+    },
+    {
+      "code": 6003,
+      "name": "ProposalAlreadyExecuted",
+      "msg": "This proposal has already been executed."
+    },
+    {
+      "code": 6004,
+      "name": "InvalidTokenMint",
+      "msg": "Invalid token mint. The provided token does not match the DAO's token."
+    },
+    {
+      "code": 6005,
+      "name": "ProposalNotPending",
+      "msg": "This proposal is not in pending state and cannot be voted on."
+    },
+    {
+      "code": 6006,
+      "name": "InvalidQuorumPercentage",
+      "msg": "Invalid quorum percentage. Must be between 0 and 100."
+    },
+    {
+      "code": 6007,
+      "name": "InvalidProposalTitle",
+      "msg": "Invalid proposal title. Must be between 1 and 100 characters."
+    },
+    {
+      "code": 6008,
+      "name": "InvalidProposalDescription",
+      "msg": "Invalid proposal description. Must be between 1 and 500 characters."
+    },
+    {
+      "code": 6009,
+      "name": "InvalidProposalDao",
+      "msg": "Proposal does not belong to this DAO."
+    },
+    {
+      "code": 6010,
+      "name": "AccountFrozen",
+      "msg": "Token account is frozen and cannot participate in governance."
+    },
+    {
+      "code": 6011,
+      "name": "ArithmeticOverflow",
+      "msg": "Arithmetic overflow or underflow occurred during calculation."
+    },
+    {
+      "code": 6012,
+      "name": "InvalidTotalVoters",
+      "msg": "Invalid total voters count. Must be greater than 0."
+    }
+  ],
+  "types": [
+    {
+      "name": "DaoState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposal_count",
+            "type": "u64"
+          },
+          {
+            "name": "token_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "quorum_percentage",
+            "type": "u8"
+          },
+          {
+            "name": "total_voters",
+            "type": "u64"
+          },
+          {
+            "name": "authority",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proposal",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposal_id",
+            "type": "u64"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "yes_votes",
+            "type": "u64"
+          },
+          {
+            "name": "no_votes",
+            "type": "u64"
+          },
+          {
+            "name": "state",
+            "type": {
+              "defined": {
+                "name": "ProposalState"
+              }
+            }
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "dao_state",
+            "type": "pubkey"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProposalState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Pending"
+          },
+          {
+            "name": "Passed"
+          },
+          {
+            "name": "Rejected"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoteType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Yes"
+          },
+          {
+            "name": "No"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VoterState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "has_voted",
+            "type": "bool"
+          },
+          {
+            "name": "vote_type",
+            "type": {
+              "defined": {
+                "name": "VoteType"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

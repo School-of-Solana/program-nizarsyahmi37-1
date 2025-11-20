@@ -14,7 +14,7 @@ pub enum VoteType {
     No,
 }
 
-declare_id!("5NnuMeVonNB9VDcFosMQLKvGbUTkQdvUtou8FL2uFz9R");
+declare_id!("CX6oBVoDv3dFWsSmEJbaWAaNzdhyjbBDdCCue8vDmQSo");
 
 #[program]
 pub mod hob_dao {

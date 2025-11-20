@@ -1,6 +1,6 @@
 Testing the Anchor program and TypeScript tests
 
-This repository contains an Anchor program (`programs/which-dao`) and TypeScript tests under `tests/which-dao.ts` that exercise every instruction (happy + unhappy flows).
+This repository contains an Anchor program (`programs/hob-dao`) and TypeScript tests under `tests/hob-dao.ts` that exercise every instruction (happy + unhappy flows).
 
 Prerequisites
 - Rust + cargo
